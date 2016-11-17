@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Assignment 7</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+	<form name="nameForm" action="#" method="post" onsubmit="return addName()"></p>
+               Name: <input type="text" name="userName"><br>
+               <input type="submit" name="newName" value="Submit">
+        </form>
+	<script>
+		function addName(){
+			var x = document.forms["nameForm"]["userName"].value;
+			if (x == null || x == "") {
+    			alert("Name must be filled out");
+			}
+			else{
+				var request = new XMLHttpRequest();
+				// request.open('GET', 'http://0.0.0.0:8080', true);
+				// request.send();
+				request.open('POST', '/', true);
+				request.setRequestHeader('Content-Type', 'application/json');
+				request.send(JSON.stringify({"userName" : x}));
+			}
+			return false;
+		}
+	</script>
+</body> 
+</html>
